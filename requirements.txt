@@ -1,3 +1,5 @@
 anthropic
 streamlit
 python-dotenv
+folium
+streamlit-folium
