@@ -1,0 +1,141 @@
+# Introduction to AI Agents — A Practical Guide
+
+## What is an AI Agent?
+
+An AI agent is a system that perceives its environment, makes decisions, and takes actions
+to achieve specific goals. Unlike traditional software that follows fixed rules, AI agents
+can reason, plan, and adapt to new situations dynamically.
+
+The key difference between a regular AI chatbot and an agent is autonomy. A chatbot
+responds to questions. An agent decides what to do next, executes actions, observes
+results, and continues until a goal is achieved.
+
+## The Agent Loop
+
+Every AI agent operates on a fundamental loop:
+
+1. Observe — The agent receives input from its environment (user message, tool result, data)
+2. Think — The agent reasons about what to do next (using an LLM like Claude)
+3. Act — The agent takes an action (calls a tool, writes code, sends a message)
+4. Repeat — The loop continues until the goal is reached or the agent stops
+
+This is often called the ReAct pattern (Reasoning + Acting), popularised by researchers
+at Google and Princeton in 2022.
+
+## Types of AI Agents
+
+### Single Agent
+One LLM handles all reasoning and tool use. Simple, fast, easy to debug.
+Best for: focused tasks like answering questions, writing code, searching the web.
+
+### Multi-Agent Systems
+Multiple LLMs collaborate, each specialising in a different role.
+Example: a Researcher agent finds information, a Writer agent drafts content,
+an Editor agent reviews and improves it.
+Best for: complex workflows that benefit from specialisation and parallel processing.
+
+### Hierarchical Agents
+A manager agent breaks down a task and delegates to worker agents.
+Best for: large scale automation, enterprise workflows.
+
+## Tools — The Hands of an Agent
+
+Agents are powerful because of tools. A tool is any function the agent can call:
+- Web search — find current information
+- Code execution — run Python, JavaScript etc
+- File reading — parse PDFs, CSVs, documents
+- API calls — interact with external services
+- Memory — store and retrieve information across sessions
+- Email/Calendar — interact with productivity tools
+
+Without tools, an agent is just a chatbot. With tools, it can take real actions in the world.
+
+## Memory in Agents
+
+Agents have different types of memory:
+
+**Short-term (In-context):** Everything in the current conversation. Fast but limited by
+context window size. Lost when the conversation ends.
+
+**Long-term (External):** Stored in a database or vector store. Survives across sessions.
+Used in RAG (Retrieval Augmented Generation) systems.
+
+**Episodic:** Memory of past events and interactions. Helps agents learn from experience.
+
+**Semantic:** Factual knowledge about the world. Usually baked into the LLM's training.
+
+## RAG — Retrieval Augmented Generation
+
+RAG is a technique where an agent retrieves relevant information from a knowledge base
+before generating a response. Instead of relying only on what the LLM was trained on,
+RAG lets agents work with fresh, specific, or private data.
+
+RAG Pipeline:
+1. Document is split into chunks
+2. Each chunk is converted to a vector embedding
+3. Embeddings are stored in a vector database
+4. User asks a question
+5. Question is converted to an embedding
+6. Similar chunks are retrieved from the database
+7. Retrieved chunks + question are sent to the LLM
+8. LLM generates answer grounded in the retrieved content
+
+Popular vector databases: Pinecone, Weaviate, ChromaDB, FAISS
+
+## Forward Deployed Engineers and Agents
+
+Forward Deployed Engineers (FDEs) are engineers who work directly with clients to
+solve real business problems using software and AI. They sit at the intersection of
+engineering, product, and consulting.
+
+Key FDE skills:
+- Rapid prototyping — build a working demo in hours not weeks
+- Client communication — explain technical concepts to non-technical stakeholders
+- Problem framing — translate vague business needs into precise technical solutions
+- Agent design — architect multi-agent systems for enterprise workflows
+- Deployment — ship production-grade systems quickly
+
+The rise of AI agents has made FDE roles more valuable than ever. Companies like
+Palantir, Anduril, Scale AI, and Anthropic hire FDEs to deploy AI systems directly
+with enterprise customers.
+
+## Common Agent Patterns
+
+### Plan and Execute
+The agent first creates a complete plan, then executes each step.
+Pros: more coherent, easier to review. Cons: rigid, hard to adapt mid-execution.
+
+### ReAct (Reason + Act)
+The agent reasons about each step before acting, interleaving thought and action.
+Pros: flexible, adaptive. Cons: can lose track of the big picture on long tasks.
+
+### Reflection
+After completing a task, the agent evaluates its own output and improves it.
+Pros: higher quality output. Cons: slower, costs more tokens.
+
+### Self-Ask
+The agent breaks down complex questions into simpler sub-questions and answers them
+one by one before synthesising a final answer.
+
+## Challenges in Agent Development
+
+1. Hallucination — Agents can confidently state incorrect information
+2. Tool errors — APIs fail, formats change, rate limits hit
+3. Infinite loops — Agents can get stuck repeating the same action
+4. Context limits — Long tasks can exceed the LLM context window
+5. Cost — Many tool calls and LLM calls add up quickly
+6. Evaluation — Hard to measure if an agent is actually working well
+
+## The Future of Agents
+
+Agents are moving from research demos to production systems. Key trends:
+
+- Long context windows — Claude and GPT-4 can now handle entire codebases
+- Faster inference — Agents can act in near real-time
+- Better tool use — LLMs are getting much better at using tools reliably
+- Agent frameworks — LangChain, LlamaIndex, smolagents making it easier to build
+- Computer use — Agents that can control browsers and desktops directly
+
+The next 2-3 years will see agents embedded in every enterprise software system.
+FDEs who understand agent architecture will be among the most valuable engineers
+in the market.
